@@ -20,7 +20,7 @@ def get_db_connection():
 
 @app.route("/add-book", methods=["POST"])
 def post_book():
-    conn = get_db_connection()  # Parantez ekleyin
+    conn = get_db_connection()  
     if conn is None:
         return jsonify({"error": "Veritabanına bağlantı bulunamadı."}), 500
     try:
@@ -55,7 +55,7 @@ def post_book():
 
 @app.route('/book/del/<int:yazar_id>', methods=["DELETE"])
 def user_delete(yazar_id):
-    conn = get_db_connection()  # Parantez ekleyin
+    conn = get_db_connection()  
     if conn is None:
         return jsonify({"error": "Veritabanına bağlanılamadı."}), 500
     
@@ -80,7 +80,7 @@ def user_delete(yazar_id):
 
 @app.route('/book-update', methods=["PUT"])
 def book_update():
-    conn = get_db_connection()  # Parantez ekleyin
+    conn = get_db_connection()  
     if conn is None:
         return jsonify({"error": "Veritabanına bağlanılamadı."}), 500
     
@@ -102,7 +102,7 @@ def book_update():
         cursor = conn.cursor()
         cursor.execute(
             "UPDATE dbo.Kitaplar SET Başlık=?, YayınYılı=? WHERE YazarID=?",
-            (baslik, yayin_yili,yazar_id)  # yayin_yili_str yerine yayin_yili kullanın
+            (baslik, yayin_yili,yazar_id) 
         )
 
         conn.commit()
